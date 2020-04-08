@@ -1,4 +1,5 @@
 {% import 'macros/flash.html' as flash with context %}
+{% import 'macros/analytics.html' as analytics with context %}
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/vendor/fontawesome/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+
+    {{ analytics.google_ua() }}
 
 </head>
 

@@ -1,12 +1,12 @@
+import sentry_sdk
 from celery import Celery
 from flask import Flask
+from sentry_sdk.integrations.flask import FlaskIntegration
 from werkzeug.debug import DebuggedApplication
 
-import sentry_sdk
-from sentry_sdk.integrations.flask import FlaskIntegration
-
 from cli import register_cli_commands
-from snakeeyes.register import blueprints, extensions
+from snakeeyes.register import (blueprints, error_templates, extensions,
+                                middleware)
 
 CELERY_TASK_LIST = [
     'snakeeyes.blueprints.contact.tasks',
@@ -56,7 +56,11 @@ def create_app(settings_override=None):
     # Register
     blueprints(app)
     extensions(app)
+    middleware(app)
+    error_templates(app)
     register_cli_commands(app)
+
+    app.logger.setLevel(app.config['LOG_LEVEL'])
 
     if app.debug:
         app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)

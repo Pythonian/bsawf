@@ -1,10 +1,12 @@
 import os
 
-
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret')
 
-SERVER_NAME = os.getenv('SERVER_NAME',
-                        'localhost.localdomain:8000')
+DEBUG = True
+LOG_LEVEL = 'DEBUG'  # CRITICAL / ERROR / WARNING / INFO / DEBUG
+
+# SERVER_NAME = os.getenv('SERVER_NAME',
+#                         'localhost.localdomain:8000')
 
 # Flask-Mail.
 MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER', 'no-reply@example.com')
@@ -27,3 +29,5 @@ CELERY_REDIS_MAX_CONNECTIONS = 5
 DEBUG_TB_INTERCEPT_REDIRECTS = False
 
 SENTRY_SDK = os.getenv('SENTRY_SDK')
+
+ANALYTICS_GOOGLE_UA = None
