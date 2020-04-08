@@ -6,7 +6,7 @@ from werkzeug.debug import DebuggedApplication
 
 from cli import register_cli_commands
 from snakeeyes.register import (blueprints, error_templates, extensions,
-                                middleware)
+                                middleware, exception_handler)
 
 CELERY_TASK_LIST = [
     'snakeeyes.blueprints.contact.tasks',
@@ -58,6 +58,7 @@ def create_app(settings_override=None):
     extensions(app)
     middleware(app)
     error_templates(app)
+    exception_handler(app)
     register_cli_commands(app)
 
     app.logger.setLevel(app.config['LOG_LEVEL'])

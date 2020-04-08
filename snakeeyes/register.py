@@ -1,3 +1,5 @@
+import logging
+from logging.handlers import SMTPHandler
 from flask import render_template
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -74,5 +76,36 @@ def error_templates(app):
 
     for error in CUSTOM_ERROR_PAGES:
         app.errorhandler(error)(render_status)
+
+    return None
+
+
+def exception_handler(app):
+    """
+    Register 0 or more exception handlers (mutates the app passed in).
+
+    :param app: Flask application instance
+    :return: None
+    """
+    mail_handler = SMTPHandler((app.config.get('MAIL_SERVER'),
+                                app.config.get('MAIL_PORT')),
+                               app.config.get('MAIL_USERNAME'),
+                               [app.config.get('MAIL_USERNAME')],
+                               '[Exception handler] A 5xx was thrown',
+                               (app.config.get('MAIL_USERNAME'),
+                                app.config.get('MAIL_PASSWORD')),
+                               secure=())
+
+    mail_handler.setLevel(logging.ERROR)
+    mail_handler.setFormatter(logging.Formatter("""
+    Time:               %(asctime)s
+    Message type:       %(levelname)s
+
+
+    Message:
+
+    %(message)s
+    """))
+    app.logger.addHandler(mail_handler)
 
     return None
