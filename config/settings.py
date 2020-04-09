@@ -14,7 +14,7 @@ MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER')
 MAIL_SERVER = os.getenv('MAIL_SERVER')
 MAIL_PORT = int(os.environ.get('MAIL_PORT'))
 MAIL_USE_TLS = bool(strtobool(os.getenv('MAIL_USE_TLS')))
-MAIL_USE_SSL = False
+MAIL_USE_SSL = bool(strtobool(os.getenv('MAIL_USE_SSL')))
 MAIL_USERNAME = os.getenv('MAIL_USERNAME')
 MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
 
