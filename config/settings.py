@@ -11,7 +11,7 @@ SERVER_NAME = os.getenv('SERVER_NAME',
 # Flask-Mail.
 MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER')
 MAIL_SERVER = os.getenv('MAIL_SERVER')
-MAIL_PORT = 2525
+MAIL_PORT = int(os.environ.get('MAIL_PORT'))
 MAIL_USE_TLS = True
 MAIL_USE_SSL = False
 MAIL_USERNAME = os.getenv('MAIL_USERNAME')
