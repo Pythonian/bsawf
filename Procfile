@@ -1,1 +1,1 @@
-web: gunicorn bsawf.wsgi:app
+web: gunicorn wsgi:app
