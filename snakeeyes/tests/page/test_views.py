@@ -1,4 +1,5 @@
 from flask import url_for
+from utils.tests import assert_status_with_message
 
 
 class TestPage(object):

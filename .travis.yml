@@ -8,8 +8,5 @@ services:
   - redis-server
 install:
   - pip install -r requirements.txt
-  - pip install coveralls
 script:
   - pytest
-after_success:
-  - coveralls

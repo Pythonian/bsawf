@@ -8,7 +8,7 @@ from flask.cli import with_appcontext
 @click.command()
 @click.option('--skip-init/--no-skip-init', default=True,
               help='Skip __init__.py files?')
-@click.argument('path', default='.')
+@click.argument('path', default='snakeeyes')
 @with_appcontext
 def flake8(skip_init, path):
     """

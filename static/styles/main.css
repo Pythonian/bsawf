@@ -34,27 +34,6 @@ h5, h6 {
   margin-top: 20px;
 }
 
-/* Margin and padding
--------------------------------------------------- */
-.lg-margin-bottom {
-  margin-bottom: 60px;
-}
-
-.md-margin-bottom {
-  margin-bottom: 40px;
-}
-
-.lg-margin-top {
-  margin-top: 60px;
-}
-
-.md-margin-top {
-  margin-top: 40px;
-}
-
-.sm-margin-top {
-  margin-top: 20px;
-}
 
 /* Helpers
 -------------------------------------------------- */

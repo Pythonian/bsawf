@@ -1,21 +1,21 @@
 {% import 'macros/flash.html' as flash with context %}
 {% import 'macros/analytics.html' as analytics with context %}
+{% import 'macros/meta_tags.html' as meta_tags %}
+{% import 'macros/favicons.html' as favicons %}
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% block meta_description %}{% endblock %}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{ meta_tags.render(csrf_token()) }}
 
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/vendor/fontawesome/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+
+    {{ favicons.render(self.title()) }}
 
     {{ analytics.google_ua() }}
 
