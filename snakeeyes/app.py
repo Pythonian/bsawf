@@ -23,7 +23,7 @@ def create_celery_app(app=None):
     """
     app = app or create_app()
 
-    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],
+    celery = Celery(app.import_name, broker=app.config['REDIS_URL'],
                     include=CELERY_TASK_LIST)
     celery.conf.update(app.config)
     TaskBase = celery.Task
