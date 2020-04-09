@@ -9,7 +9,7 @@ services:
 before_install:
   - pip install -U pip
   - pip install -U pytest
-  - pip install -u codecov
+  - pip install -U codecov
 install:
   - pip install -r requirements.txt
 script:
