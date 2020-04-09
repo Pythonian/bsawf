@@ -3,7 +3,7 @@ from distutils.util import strtobool
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 LOG_LEVEL = 'DEBUG'  # CRITICAL / ERROR / WARNING / INFO / DEBUG
 
 SERVER_NAME = os.getenv('SERVER_NAME')
