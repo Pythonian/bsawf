@@ -10,7 +10,7 @@ SERVER_NAME = os.getenv('SERVER_NAME',
 
 # Flask-Mail.
 MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER')
-MAIL_SERVER = 'smtp.mailtrap.io'
+MAIL_SERVER = os.getenv('MAIL_SERVER')
 MAIL_PORT = 2525
 MAIL_USE_TLS = True
 MAIL_USE_SSL = False
