@@ -6,8 +6,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 LOG_LEVEL = 'DEBUG'  # CRITICAL / ERROR / WARNING / INFO / DEBUG
 
-SERVER_NAME = os.getenv('SERVER_NAME',
-                        'localhost.localdomain:8000')
+SERVER_NAME = os.getenv('SERVER_NAME')
 
 # Flask-Mail.
 MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER')
