@@ -22,6 +22,6 @@ sentry-sdk[flask]==0.14.3
 # Environment variables
 python-dotenv==0.12.0
 
-# Development server for Heroku
+# Development server and database for Heroku
 gunicorn==20.0.4
 psycopg2==2.8.5
