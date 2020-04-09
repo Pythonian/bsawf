@@ -4,8 +4,6 @@ python:
 branches:
   only:
     - master
-services:
-  - redis-server
 install:
   - pip install -r requirements.txt
 script:
