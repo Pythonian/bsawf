@@ -1,1 +1,1 @@
-web: gunicorn bsawf:snakeeyes.app
+web: gunicorn snakeeyes:app
