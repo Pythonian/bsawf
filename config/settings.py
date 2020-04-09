@@ -14,8 +14,8 @@ MAIL_SERVER = os.getenv('MAIL_SERVER')
 MAIL_PORT = 2525
 MAIL_USE_TLS = True
 MAIL_USE_SSL = False
-MAIL_USERNAME = '93dad87dab41b7'
-MAIL_PASSWORD = '3d2294bed0d58f'
+MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
 
 # Celery.
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
