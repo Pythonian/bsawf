@@ -6,7 +6,7 @@ import click
 
 @click.command()
 @click.argument('bytes', default=128)
-def secret(bytes):
+def cli(bytes):
     """
     Generate a random secret token.
 

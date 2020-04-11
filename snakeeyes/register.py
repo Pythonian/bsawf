@@ -5,11 +5,30 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 from snakeeyes.blueprints.contact import contact
 from snakeeyes.blueprints.page import page
-from snakeeyes.extensions import csrf, debug_toolbar, mail
+from snakeeyes.blueprints.user import user
+from snakeeyes.extensions import (csrf, db, debug_toolbar,
+                                  login_manager, mail, migrate)
 
-FLASK_BLUEPRINTS = [page, contact]
+FLASK_BLUEPRINTS = [page, contact, user]
 
 CUSTOM_ERROR_PAGES = [404, 500]
+
+
+def authentication(app, user_model):
+    """
+    Initialize the Flask-Login extension (mutates the app passed in).
+
+    :param app: Flask application instance
+    :param user_model: Model that contains the authentication information
+    :type user_model: SQLAlchemy model
+    :return: None
+    """
+    login_manager.login_view = 'user.login'
+    login_manager.login_message_category = 'danger'
+
+    @login_manager.user_loader
+    def load_user(uid):
+        return user_model.query.get(uid)
 
 
 def blueprints(app):
@@ -35,6 +54,9 @@ def extensions(app):
     debug_toolbar.init_app(app)
     mail.init_app(app)
     csrf.init_app(app)
+    db.init_app(app)
+    migrate.init_app(app, db)
+    login_manager.init_app(app)
 
     return None
 

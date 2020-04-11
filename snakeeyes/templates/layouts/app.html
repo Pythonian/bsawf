@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+
+{% block header %}
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-5">
+    <div class="container">
+        <a href="{{ url_for('page.home') }}">
+            <img src="{{ url_for('static', filename='images/snake-eyes.jpg') }}" class="img-fluid" width="229"
+                height="50" title="Snake Eyes" alt="Snake Eyes" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountdropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Account</a>
+                    <div class="dropdown-menu" aria-labelledby="accountdropdown">
+                        <a class="dropdown-item" href="{{ url_for('user.settings') }}">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">Session</h6>
+                        <a class="dropdown-item" href="{{ url_for('user.logout') }}">Log out</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('user.login') }}" class="nav-link">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('user.signup') }}" class="nav-link">Sign up</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+
+{% block footer %}
+<li class="list-inline-item">
+    <a href="{{ url_for('contact.index') }}">Contact</a>
+</li>
+<li class="list-inline-item">
+    <a href="{{ url_for('page.privacy') }}">Privacy Policy</a>
+</li>
+<li class="list-inline-item">
+    <a href="{{ url_for('page.terms') }}">Terms of Service</a>
+</li>
+{% endblock %}

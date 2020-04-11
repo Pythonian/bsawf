@@ -2,13 +2,10 @@ import subprocess
 
 import click
 
-from flask.cli import with_appcontext
-
 
 @click.command()
 @click.argument('path', default='snakeeyes')
-@with_appcontext
-def cov(path):
+def cli(path):
     """
     Run a test coverage report.
 

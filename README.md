@@ -37,7 +37,11 @@ This walkthrough assumes you're using a Windows OS
 
 **Step 5**: Open up the redis-server installed
 
-**Step 6**: Start the development server
+**Step 6**: Install the custom command tools
+
+    $ pip install --editable .
+
+**Step 7**: Start the development server
 
     $ flask run
 

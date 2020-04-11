@@ -4,12 +4,13 @@ from flask import Flask
 from sentry_sdk.integrations.flask import FlaskIntegration
 from werkzeug.debug import DebuggedApplication
 
-from cli import register_cli_commands
+from snakeeyes.blueprints.user.models import User
 from snakeeyes.register import (blueprints, error_templates, extensions,
-                                middleware, exception_handler)
+                                middleware, exception_handler, authentication)
 
 CELERY_TASK_LIST = [
     'snakeeyes.blueprints.contact.tasks',
+    'snakeeyes.blueprints.user.tasks',
 ]
 
 
@@ -54,12 +55,12 @@ def create_app(settings_override=None):
         app.config.update(settings_override)
 
     # Register
+    authentication(app, User)
     blueprints(app)
     extensions(app)
     middleware(app)
     error_templates(app)
     exception_handler(app)
-    register_cli_commands(app)
 
     app.logger.setLevel(app.config['LOG_LEVEL'])
 

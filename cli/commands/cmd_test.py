@@ -3,13 +3,10 @@ import subprocess
 
 import click
 
-from flask.cli import with_appcontext
-
 
 @click.command()
 @click.argument('path', default=os.path.join('snakeeyes', 'tests'))
-@with_appcontext
-def test(path):
+def cli(path):
     """
     Run tests with Pytest.
 

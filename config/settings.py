@@ -1,5 +1,10 @@
 import os
+from datetime import timedelta
 from distutils.util import strtobool
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))), '.env'))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -31,3 +36,14 @@ DEBUG_TB_INTERCEPT_REDIRECTS = False
 SENTRY_SDK = os.getenv('SENTRY_SDK')
 
 ANALYTICS_GOOGLE_UA = os.getenv('ANALYTICS_GOOGLE_UA')
+
+# SQLAlchemy
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+# Seed Admin User
+SEED_ADMIN_EMAIL = os.getenv('SEED_ADMIN_EMAIL')
+SEED_ADMIN_PASSWORD = os.getenv('SEED_ADMIN_PASSWORD')
+
+# Flask-Login
+REMEMBER_COOKIE_DURATION = timedelta(days=90)

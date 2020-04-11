@@ -22,21 +22,12 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-5">
-        <div class="container">
-            <a href="{{ url_for('page.home') }}">
-                <img src="{{ url_for('static', filename='images/snake-eyes.jpg') }}" class="img-fluid" width="229"
-                    height="50" title="Snake Eyes" alt="Snake Eyes" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+
+    {% block header %}{% endblock %}
 
     <main class="container mb-5">
         {{ flash.render() }}
+        <div class="mt-2">{% block heading %}{% endblock %}</div>
         {% block body %}{% endblock %}
     </main>
 
@@ -44,15 +35,7 @@
         <div class="container">
             <ul class="list-inline">
                 <li class="list-inline-item text-muted">Snake Eyes &copy; 2020</li>
-                <li class="list-inline-item">
-                    <a href="{{ url_for('contact.index') }}">Contact</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="{{ url_for('page.privacy') }}">Privacy Policy</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="{{ url_for('page.terms') }}">Terms of Service</a>
-                </li>
+                {% block footer %}{% endblock %}
             </ul>
         </div>
     </footer>

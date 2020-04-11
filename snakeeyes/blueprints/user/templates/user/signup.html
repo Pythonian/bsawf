@@ -1,0 +1,67 @@
+{% extends 'layouts/app.html' %}
+{% import 'macros/form.html' as f with context %}
+
+{% block title %}Sign up for a new account{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-7">
+        <h2 class="mt-0 mb-5">What are you waiting for?</h2>
+
+        <div class="media mb-4">
+            <div class="align-self-start mr-3">
+                <i class="fa fa-fw fa-3x fa-bullhorn text-primary"></i>
+            </div>
+            <div class="media-body">
+                <h4 class="mt-0">Place bets</h4>
+                <span class="text-muted">
+                    Correctly guess the dice's roll.
+                </span>
+            </div>
+        </div>
+        <div class="media mb-4">
+            <div class="align-self-start mr-3">
+                <i class="fa fa-fw fa-3x fa-database text-primary"></i>
+            </div>
+            <div class="media-body">
+                <h4 class="mt-0">Win currency</h4>
+                <span class="text-muted">
+                    Gain coins if your guess is correct.
+                </span>
+            </div>
+        </div>
+        <div class="media mb-4">
+            <div class="align-self-start mr-3">
+                <i class="fa fa-fw fa-3x fa-trophy text-primary"></i>
+            </div>
+            <div class="media-body">
+                <h4 class="mt-0">Leaderboard</h4>
+                <span class="text-muted">Compare your results to others.</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        {% call f.form_tag('user.signup') %}
+        <legend>Sign up today</legend>
+
+        {% call f.form_group(form.email, autofocus='autofocus', placeholder='Email address') %}{% endcall %}
+
+        {% call f.form_group(form.password) %}{% endcall %}
+
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary btn-block">
+                    Register
+                </button>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ url_for('user.login') }}" class="btn btn-secondary btn-block">
+                    Looking to sign in?
+                </a>
+            </div>
+        </div>
+        {% endcall %}
+
+    </div>
+</div>
+{% endblock %}

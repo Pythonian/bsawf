@@ -1,0 +1,39 @@
+{% extends 'layouts/login.html' %}
+{% import 'macros/form.html' as f with context %}
+
+{% block title %}Sign in to access your account{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mt-0">Sign in to continue</h4>
+                {% call f.form_tag('user.login') %}
+
+                {% call f.form_group(form.identity, autofocus='autofocus') %}{% endcall %}
+
+                {% call f.form_group(form.password) %}{% endcall %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Sign in
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ url_for('user.signup') }}" class="btn btn-secondary btn-block">
+                            Register
+                        </a>
+                    </div>
+                </div>
+                {% endcall %}
+            </div>
+            <div class="card-footer text-muted text-center">
+                <a href="{{ url_for('user.begin_password_reset') }}">Forgot your password?</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
