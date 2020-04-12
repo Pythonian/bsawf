@@ -11,7 +11,6 @@ install:
   - pip install -r requirements.txt
 before_script:
   - psql -c "CREATE DATABASE snakeeyes;" -U postgres
-  - flask db migrate
   - flask db upgrade
 script:
   - pytest

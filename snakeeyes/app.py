@@ -55,9 +55,9 @@ def create_app(settings_override=None):
         app.config.update(settings_override)
 
     # Register
-    authentication(app, User)
     blueprints(app)
     extensions(app)
+    authentication(app, User)
     middleware(app)
     error_templates(app)
     exception_handler(app)
