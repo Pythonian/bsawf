@@ -37,13 +37,19 @@ This walkthrough assumes you're using a Windows OS
 
     $ cp .env.example .env
 
-**Step 5**: Open up the redis-server installed
+**Step 5**: Create a PostgreSQL table for the application
 
-**Step 6**: Install the custom command tools
+**Step 6**: Run the database migration command
+
+    $ flask db upgrade
+
+**Step 7**: Open up the redis-server installed
+
+**Step 8**: Install the custom command tools
 
     $ pip install --editable .
 
-**Step 7**: Start the development server
+**Step 9**: Start the development server
 
     $ flask run
 
@@ -89,6 +95,10 @@ This guide walks you through deployment on Heroku.
     $ heroku ps:scale web=1
     $ heroku ps:scale worker=1
 
-**Step 7**: Open your application in a browser
+**Step 7**: Run the database migration
+
+    $ heroku run flask db upgrade
+
+**Step 8**: Open your application in a browser
 
     $ heroku open
