@@ -15,3 +15,7 @@ class TestUser(object):
         """ Token de-serializer returns None when it's been tampered with. """
         user = User.deserialize_token('{0}1337'.format(token))
         assert user is None
+
+    def test_user_repr_method(self):
+        """ Test string representation of User instance displays correctly. """
+        assert repr(User(username="admin")) == "<User admin>"
