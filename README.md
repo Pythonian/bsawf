@@ -1,4 +1,6 @@
-# Dice rolling game [![Build Status](https://travis-ci.org/Pythonian/bsawf.svg?branch=master)](https://travis-ci.org/Pythonian/bsawf)
+# Dice rolling game
+
+[![Build Status](https://travis-ci.org/Pythonian/bsawf.svg?branch=master)](https://travis-ci.org/Pythonian/bsawf) [![Coverage Status](https://coveralls.io/repos/github/Pythonian/bsawf/badge.svg?branch=master)](https://coveralls.io/github/Pythonian/bsawf?branch=master)
 
 A dice rolling web application game built with Flask
 
