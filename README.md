@@ -22,32 +22,30 @@ This walkthrough assumes you're using a Windows OS
     $ git clone https://github.com/Pythonian/bsawf.git
     $ cd bsawf
 
-**Step 2**: Create a virtual environment.
+**Step 2**: Create a virtual environment and install requirements.
 
     $ python -m venv venv
     $ venv\scripts\activate
     (venv) > pip install -r requirements.txt
 
-**Step 3**: Setup Flask environment variables
-
-    $ set FLASK_APP=snakeeyes.app
-    $ set FLASK_ENV=development
-
-**Step 4**: Setup a .env file and modify the default settings
+**Step 3**: Setup a .env file and modify the default settings
 
     $ cp .env.example .env
 
-**Step 5**: Create a PostgreSQL table for the application
-
-**Step 6**: Run the database migration command
-
-    $ flask db upgrade
-
-**Step 7**: Open up the redis-server installed
-
-**Step 8**: Install the custom command tools
+**Step 4**: Install the custom command tools
 
     $ pip install --editable .
+
+**Step 5**: Create a PostgreSQL table for the application
+
+    $ psql -c "CREATE DATABASE dbname;" -U user
+    $ psql -c "CREATE DATABASE dbname_test;" -U user
+
+**Step 6**: Create the required database tables
+
+    $ snakeeyes db reset --with-testdb
+
+**Step 7**: Open up the redis-server installed
 
 **Step 9**: Start the development server
 

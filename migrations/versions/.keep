@@ -1,0 +1,3 @@
+To avoid git from deleting empty folders.
+
+Delete this file if versions/ folder is not empty.
