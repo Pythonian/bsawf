@@ -10,7 +10,6 @@ A dice rolling web application game built with Flask
 - A Heroku hobby-dev plan and Heroku CLI installed locally
 - PostgreSQL database installed locally
 - Redis server installed locally
-- Sentry account for Error logging
 - Mailtrap account for sending test emails during development
 
 ## Local Setup
@@ -85,7 +84,6 @@ This guide walks you through deployment on Heroku.
     $ heroku config:set MAIL_SERVER=smtp.mailtrap.io
     $ heroku config:set MAIL_USE_SSL=False
     $ heroku config:set MAIL_USE_TLS=True
-    $ heroku config:set SENTRY_SDK=https://80@321.ingest.sentry.io/85
     $ heroku config:set ANALYTICS_GOOGLE_UA=XXX
 
 **Step 6**: Allocate a web and worker process to run our app

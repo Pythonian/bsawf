@@ -5,38 +5,50 @@ html {
   min-height: 100%;
 }
 
-
 body {
-  margin-bottom: 60px;
+  padding-top: 50px;
   padding-bottom: 20px;
+
+  margin-bottom: 60px;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  padding-top: 10px;
   border-top: 1px solid #e9e9e9;
+
+  height: 60px;
 }
 
-h1 {
-  padding-bottom: 10px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #e9e9e9;
+/* Margin and padding
+-------------------------------------------------- */
+.lg-margin-bottom {
+  margin-bottom: 60px;
 }
 
-h5 {
+.md-margin-bottom {
+  margin-bottom: 40px;
+}
+
+.lg-margin-top {
+  margin-top: 60px;
+}
+
+.md-margin-top {
+  margin-top: 40px;
+}
+
+.sm-margin-top {
   margin-top: 20px;
 }
 
-
 /* Helpers
 -------------------------------------------------- */
-
-/* .small {
+.small {
   font-size: 12px;
-} */
+}
 
 .strike {
   text-decoration: line-through;
@@ -179,28 +191,3 @@ a.pricing--primary {
 #dice {
   font-size: 100px;
 }
-
-/* Nav
--------------------------------------------------- */
-.navbar {
-  border-bottom: 1px solid #e9e9e9;
-}
-
-/* $primary: #941212 !default;
-
-$input-color: #212529 !default;
-
-$input-btn-focus-width: 1px;
-$input-btn-focus-box-shadow: 0;
-
-
-.form-control {
-  &:focus {
-    border-color: $gray-600;
-    border: 1px solid $gray-600;
-  }
-
-  &.is-invalid {
-    background-image: none;
-  }
-} */

@@ -5,48 +5,52 @@
 
 {% block body %}
 <div class="row">
-    <div class="col-md-7">
-        <h2 class="mt-0 mb-5">What are you waiting for?</h2>
+    <div class="col-md-5">
+        <h2>What are you waiting for?</h2>
 
-        <div class="media mb-4">
-            <div class="align-self-start mr-3">
+        <div class="media md-margin-bottom">
+            <div class="media-left">
                 <i class="fa fa-fw fa-3x fa-bullhorn text-primary"></i>
             </div>
             <div class="media-body">
-                <h4 class="mt-0">Place bets</h4>
+                <h4 class="media-heading">Place bets</h4>
                 <span class="text-muted">
                     Correctly guess the dice's roll.
                 </span>
             </div>
         </div>
-        <div class="media mb-4">
-            <div class="align-self-start mr-3">
+        <div class="media md-margin-bottom">
+            <div class="media-left">
                 <i class="fa fa-fw fa-3x fa-database text-primary"></i>
             </div>
             <div class="media-body">
-                <h4 class="mt-0">Win currency</h4>
+                <h4 class="media-heading">Win currency</h4>
                 <span class="text-muted">
                     Gain coins if your guess is correct.
                 </span>
             </div>
         </div>
-        <div class="media mb-4">
-            <div class="align-self-start mr-3">
+        <div class="media md-margin-bottom">
+            <div class="media-left">
                 <i class="fa fa-fw fa-3x fa-trophy text-primary"></i>
             </div>
             <div class="media-body">
-                <h4 class="mt-0">Leaderboard</h4>
+                <h4 class="media-heading">Leaderboard</h4>
                 <span class="text-muted">Compare your results to others.</span>
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5 col-md-push-1 col-md-offset-1 well">
         {% call f.form_tag('user.signup') %}
         <legend>Sign up today</legend>
 
-        {% call f.form_group(form.email, autofocus='autofocus', placeholder='Email address') %}{% endcall %}
+        {% call f.form_group(form.email, css_class='sm-margin-bottom',
+                             autofocus='autofocus',
+                             placeholder='Email address') %}
+        {% endcall %}
 
-        {% call f.form_group(form.password) %}{% endcall %}
+        {% call f.form_group(form.password, css_class='sm-margin-bottom') %}
+        {% endcall %}
 
         <div class="row">
             <div class="col-md-6">
@@ -55,13 +59,13 @@
                 </button>
             </div>
             <div class="col-md-6">
-                <a href="{{ url_for('user.login') }}" class="btn btn-secondary btn-block">
+                <div class="visible-xs visible-sm sm-margin-top"></div>
+                <a href="{{ url_for('user.login') }}" class="btn btn-default btn-block">
                     Looking to sign in?
                 </a>
             </div>
         </div>
         {% endcall %}
-
     </div>
 </div>
 {% endblock %}

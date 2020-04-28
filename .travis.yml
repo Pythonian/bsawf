@@ -9,12 +9,13 @@ services:
   - postgresql
 install:
   - pip install -r requirements.txt
+  - pip install --editable .
   - pip install coveralls
 before_script:
   - cp .env.example .env
   - psql -c "CREATE DATABASE snakeeyes;" -U postgres
   - psql -c "CREATE DATABASE snakeeyes_test;" -U postgres
-  - flask db upgrade
+  - snakeeyes db reset --with-testdb
 script:
   - pytest --cov=snakeeyes/
 after_success:

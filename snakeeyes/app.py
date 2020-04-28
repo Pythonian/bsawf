@@ -1,7 +1,5 @@
-import sentry_sdk
 from celery import Celery
 from flask import Flask
-from sentry_sdk.integrations.flask import FlaskIntegration
 from werkzeug.debug import DebuggedApplication
 
 from snakeeyes.blueprints.user.models import User
@@ -66,10 +64,5 @@ def create_app(settings_override=None):
 
     if app.debug:
         app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)
-
-    sentry_sdk.init(
-        dsn=app.config['SENTRY_SDK'],
-        integrations=[FlaskIntegration()]
-    )
 
     return app
