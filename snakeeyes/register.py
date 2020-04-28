@@ -3,14 +3,14 @@ from logging.handlers import SMTPHandler
 from flask import render_template
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from snakeeyes.blueprints.user.models import User
+from snakeeyes.blueprints.admin import admin
 from snakeeyes.blueprints.contact import contact
 from snakeeyes.blueprints.page import page
 from snakeeyes.blueprints.user import user
 from snakeeyes.extensions import (csrf, db, debug_toolbar,
                                   login_manager, mail, migrate)
 
-FLASK_BLUEPRINTS = [page, contact, user]
+FLASK_BLUEPRINTS = [admin, page, contact, user]
 
 CUSTOM_ERROR_PAGES = [404, 500]
 
@@ -132,6 +132,3 @@ def exception_handler(app):
     app.logger.addHandler(mail_handler)
 
     return None
-
-
-from snakeeyes.blueprints.user.models import User
