@@ -1,8 +1,6 @@
 import click
 import random
 
-from datetime import datetime
-
 from faker import Faker
 
 from snakeeyes.app import create_app
@@ -81,11 +79,8 @@ def users():
         if len(random_emails) == 0:
             break
 
-        fake_datetime = fake.date_time_between(
-            start_date='-1y', end_date='now').strftime('%s')
-
-        created_on = datetime.utcfromtimestamp(
-            float(fake_datetime)).strftime('%Y-%m-%dT%H:%M:%S Z')
+        created_on = fake.date_time_between(
+            start_date='-1y', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
 
         random_percent = random.random()
 
@@ -104,11 +99,8 @@ def users():
         else:
             username = None
 
-        fake_datetime = fake.date_time_between(
-            start_date='-1y', end_date='now').strftime('%s')
-
-        current_sign_in_on = datetime.utcfromtimestamp(
-            float(fake_datetime)).strftime('%Y-%m-%dT%H:%M:%S Z')
+        current_sign_in_on = fake.date_time_between(
+            start_date='-1y', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
 
         params = {
             'created_on': created_on,
