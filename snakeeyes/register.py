@@ -1,16 +1,21 @@
 import logging
 from logging.handlers import SMTPHandler
+
+import stripe
 from flask import render_template
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from snakeeyes.blueprints.admin import admin
+from snakeeyes.blueprints.billing import billing, stripe_webhook
+from snakeeyes.blueprints.billing.template_processors import (current_year,
+                                                              format_currency)
 from snakeeyes.blueprints.contact import contact
 from snakeeyes.blueprints.page import page
 from snakeeyes.blueprints.user import user
-from snakeeyes.extensions import (csrf, db, debug_toolbar,
-                                  login_manager, mail, migrate)
+from snakeeyes.extensions import (
+    csrf, db, debug_toolbar, login_manager, mail)
 
-FLASK_BLUEPRINTS = [admin, page, contact, user]
+FLASK_BLUEPRINTS = [admin, page, contact, user, billing, stripe_webhook]
 
 CUSTOM_ERROR_PAGES = [404, 500]
 
@@ -56,7 +61,6 @@ def extensions(app):
     mail.init_app(app)
     csrf.init_app(app)
     db.init_app(app)
-    migrate.init_app(app, db)
     login_manager.init_app(app)
 
     return None
@@ -132,3 +136,29 @@ def exception_handler(app):
     app.logger.addHandler(mail_handler)
 
     return None
+
+
+def api_keys(app):
+    """
+    Register 0 or more API keys.
+
+    :param app: Flask application instance
+    :return: None
+    """
+    stripe.api_key = app.config.get('STRIPE_SECRET_KEY')
+    stripe.api_version = app.config.get('STRIPE_API_VERSION')
+
+    return None
+
+
+def template_processors(app):
+    """
+    Register 0 or more custom template processors (mutates the app passed in).
+
+    :param app: Flask application instance
+    :return: App jinja environment
+    """
+    app.jinja_env.filters['format_currency'] = format_currency
+    app.jinja_env.globals.update(current_year=current_year)
+
+    return app.jinja_env

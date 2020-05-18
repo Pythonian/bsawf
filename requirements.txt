@@ -4,16 +4,17 @@ Flask==1.1.2
 pytest==5.4.1
 pytest-cov==2.8.1
 flake8==3.7.9
+mock==4.0.2
 
 # Data and workers.
-redis==3.4.1
+redis==3.5.0
 celery==4.4.2
 Faker==4.0.3
 
 # Forms.
 Flask-WTF==0.14.3
 WTForms-Alchemy==0.16.9
-email-validator==1.0.5
+email-validator==1.1.0
 
 # Extensions.
 Flask-DebugToolbar==0.11.0
@@ -30,3 +31,6 @@ gunicorn==20.0.4
 psycopg2==2.8.5
 Flask-SQLAlchemy==2.4.1
 Flask-Migrate==2.5.3
+
+# Payments
+stripe==2.47.0

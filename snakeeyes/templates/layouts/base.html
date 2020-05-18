@@ -2,6 +2,7 @@
 {% import 'macros/analytics.html' as analytics with context %}
 {% import 'macros/meta_tags.html' as meta_tags %}
 {% import 'macros/favicons.html' as favicons %}
+{% import 'billing/macros/billing.html' as billing with context %}
 
 <!DOCTYPE html>
 <html>
@@ -15,17 +16,24 @@
         integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='styles/vendor/eonasdan-bootstrap-datetimepicker.4.13.30.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-
+    <script src="https://code.jquery.com/jquery-1.12.2.min.js"
+        integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v2/"></script>
     {{ favicons.render(self.title()) }}
 
     {{ analytics.google_ua() }}
+
 
 </head>
 
 <body>
 
     {% block header %}{% endblock %}
+
+    {{ billing.card_expiring_warning() }}
 
     <main class="container">
         {{ flash.render() }}
@@ -36,19 +44,18 @@
     <footer class="footer text-center">
         <div class="container">
             <ul class="list-inline">
-                <li class="text-muted">Snake Eyes &copy; 2020</li>
+                <li class="text-muted">Snake Eyes &copy; {{ current_year() }}</li>
                 {% block footer %}{% endblock %}
             </ul>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='scripts/vendor/moment.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='scripts/vendor/eonasdan-bootstrap-datetimepicker.4.14.30.min.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
 

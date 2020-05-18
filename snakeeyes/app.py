@@ -4,11 +4,13 @@ from werkzeug.debug import DebuggedApplication
 
 from snakeeyes.blueprints.user.models import User
 from snakeeyes.register import (blueprints, error_templates, extensions,
-                                middleware, exception_handler, authentication)
+                                middleware, exception_handler, authentication,
+                                api_keys, template_processors)
 
 CELERY_TASK_LIST = [
     'snakeeyes.blueprints.contact.tasks',
     'snakeeyes.blueprints.user.tasks',
+    'snakeeyes.blueprints.billing.tasks',
 ]
 
 
@@ -59,6 +61,8 @@ def create_app(settings_override=None):
     middleware(app)
     error_templates(app)
     exception_handler(app)
+    api_keys(app)
+    template_processors(app)
 
     app.logger.setLevel(app.config['LOG_LEVEL'])
 
