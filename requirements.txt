@@ -1,20 +1,20 @@
 Flask==1.1.2
 
 # Testing and static analysis.
-pytest==5.4.1
-pytest-cov==2.8.1
-flake8==3.7.9
+pytest==5.4.3
+pytest-cov==2.10.0
+flake8==3.8.3
 mock==4.0.2
 
 # Data and workers.
-redis==3.5.0
-celery==4.4.2
-Faker==4.0.3
+redis==3.5.3
+celery==4.4.6
+Faker==4.1.1
 
 # Forms.
 Flask-WTF==0.14.3
-WTForms-Alchemy==0.16.9
-email-validator==1.1.0
+WTForms-Alchemy==0.17.0
+email-validator==1.1.1
 
 # Extensions.
 Flask-DebugToolbar==0.11.0
@@ -22,15 +22,15 @@ Flask-Mail==0.9.1
 Flask-Login==0.5.0
 
 # Environment variables
-python-dotenv==0.13.0
+python-dotenv==0.14.0
 
 # Production server
 gunicorn==20.0.4
 
 # Database
 psycopg2==2.8.5
-Flask-SQLAlchemy==2.4.1
+Flask-SQLAlchemy==2.4.3
 Flask-Migrate==2.5.3
 
 # Payments
-stripe==2.47.0
+stripe==2.48.0
