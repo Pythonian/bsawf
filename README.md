@@ -6,37 +6,37 @@ A dice rolling web application game built with Flask
 
 ## Requirements
 
-- Python 3.7+
-- A Heroku hobby-dev plan and Heroku CLI installed locally
+- Python 3.8
 - PostgreSQL database installed locally
 - Redis server installed locally
 - Mailtrap account for sending test emails during development
 
 ## Local Setup
 
-This walkthrough assumes you're using a Windows OS
-
 **Step 1**: Clone the git repository
 
     $ git clone https://github.com/Pythonian/bsawf.git
     $ cd bsawf
 
-**Step 2**: Create a virtual environment and install requirements.
+**Step 2**: Create a virtual environment and install requirements
 
-    $ python -m venv venv
-    $ venv\scripts\activate
-    (venv) > pip install -r requirements.txt
+    $ python3 -m venv venv
+    $ . venv/bin/activate
+    (venv) $ pip install wheel
+    (venv) $ pip install -r requirements.txt
 
-**Step 3**: Setup a .env file and modify the default settings
+**Step 3**: Create a .env file and modify the default settings according to your setup
 
     $ cp .env.example .env
 
-**Step 4**: Install the custom command tools
+**Step 4**: Install the custom command tools and check out the available commands
 
     $ pip install --editable .
+    $ snakeeyes
 
 **Step 5**: Create a PostgreSQL table for the application
 
+    $ sudo service postgresql start
     $ psql -c "CREATE DATABASE dbname;" -U user
     $ psql -c "CREATE DATABASE dbname_test;" -U user
 
@@ -44,7 +44,13 @@ This walkthrough assumes you're using a Windows OS
 
     $ snakeeyes db reset --with-testdb
 
-**Step 7**: Open up the redis-server installed
+**Step 7**: Start the redis-server
+
+    $ sudo service redis-server start
+
+**Step 8**: Run the test coverage suite
+
+    $ snakeeyes cov
 
 **Step 9**: Start the development server
 
@@ -53,7 +59,7 @@ This walkthrough assumes you're using a Windows OS
 
 ## Heroku Setup
 
-This guide walks you through deployment on Heroku.
+This guide walks you through deployment on Heroku. You'll need to have Heroku CLI installed locally.
 
 **Step 1**: Login to heroku via your command prompt and enter your credentials
 
