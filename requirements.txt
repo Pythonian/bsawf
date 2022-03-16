@@ -8,7 +8,7 @@ mock==4.0.3
 
 # Data and workers.
 redis==3.5.3
-celery==5.1.2
+celery==5.2.2
 Faker==8.11.0
 
 # Forms.
