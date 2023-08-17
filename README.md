@@ -37,8 +37,8 @@ A dice rolling web application game built with Flask
 **Step 5**: Create a PostgreSQL table for the application
 
     $ sudo service postgresql start
-    $ psql -c "CREATE DATABASE dbname;" -U user
-    $ psql -c "CREATE DATABASE dbname_test;" -U user
+    $ psql -c "CREATE DATABASE bswaf;" -U user
+    $ psql -c "CREATE DATABASE bswaf_test;" -U user
 
 **Step 6**: Create the required database tables
 
